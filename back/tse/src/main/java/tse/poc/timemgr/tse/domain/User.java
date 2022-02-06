@@ -56,7 +56,7 @@ public class User {
     private String nom;
     private String prenom;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "manager")
     private User manager;
 
