@@ -1,0 +1,42 @@
+<mat-card *ngIf="!authorized">Error: Unauthorized </mat-card>
+<div *ngIf="authorized">
+    <div class="container" *ngIf="currentUser; else loggedOut">
+
+        <mat-card>
+            <mat-icon>contact_mail</mat-icon><strong>Id:</strong>&nbsp;&nbsp;{{ user?.id }}
+        </mat-card>
+        <mat-card>
+            <mat-icon>perm_identity</mat-icon><strong>Username:</strong>&nbsp;&nbsp;{{user?.username}}
+        </mat-card>
+        <mat-card>
+            <mat-icon>looks_one</mat-icon><strong>First Name:</strong>&nbsp;&nbsp;{{ user?.prenom }}
+        </mat-card>
+        <mat-card>
+            <mat-icon>looks_two</mat-icon> <strong>Last Name:</strong>
+            &nbsp;&nbsp;{{ user?.nom }}
+        </mat-card>
+        <mat-card>
+            <mat-icon>alternate_email</mat-icon><strong>Email:</strong>
+            &nbsp;&nbsp;{{ user?.email }}
+        </mat-card>
+        <mat-card>
+            <mat-icon>supervisor_account</mat-icon><strong>Manager:</strong>
+            &nbsp;&nbsp;{{ user?.manager['username'] }}
+        </mat-card>
+        <mat-card>
+            <mat-icon>folder_shared</mat-icon><strong>Roles:</strong>
+            <ul>
+                <li *ngFor="let role of currentUser.roles">
+                    {{ role }}
+                </li>
+            </ul>
+        </mat-card>
+
+
+
+    </div>
+
+    <ng-template #loggedOut>
+        Please login.
+    </ng-template>
+</div>
